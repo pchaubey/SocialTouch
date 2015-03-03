@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	id="WebApp_ID" version="3.0">
+	<display-name>TwitterRest</display-name>
+	<servlet>
+		<servlet-name>TwitterRest</servlet-name>
+		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+		<!-- Register resources and providers under com.vogella.jersey.first package. -->
+		<init-param>
+			<param-name>jersey.config.server.provider.packages</param-name>
+			<param-value>com.twitter.rest.madhav</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>TwitterRest</servlet-name>
+		<url-pattern>/twitter/*</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>commonFilter</filter-name> <!-- mandatory -->
+		<filter-class>com.twitter.rest.madhav.CROSFilter</filter-class> <!-- mandatory -->
+		<init-param>
+			<param-name>test</param-name>
+			<param-value>testValue</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>commonFilter</filter-name> 
+		<url-pattern>/*</url-pattern> 
+		<servlet-name>TwitterRest</servlet-name>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+
+</web-app> 

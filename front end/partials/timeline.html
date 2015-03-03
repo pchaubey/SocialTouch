@@ -1,0 +1,63 @@
+<div class="container">
+
+	<style>
+	
+	a:hover{
+	    text-decoration: none;
+	}	
+	
+	</style>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="page-header">
+            	<h2><span style="color:blue">Social Touch!</span></h2>
+                <h1><small>Your Timeline</small></h1>
+            </div>
+            <ol class="breadcrumb">
+                <li>Home</li>
+                <li class="active">Messages</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div class="panel-group" id="accordion">
+            
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        	
+							<div ng-repeat="item in tweets">
+								<strong>{{item.attr.name}}</strong> <span style="color:grey"> @{{item.attr.handleID}}</span> <span  style="color:grey">. {{item.attr.timeStamp}} </span> <br> <span style="black" ng-bind-html="item.status"></span> <br>
+								<a href="" ng-click="postReply(item.attr.tweetID, item.attr.handleID)">reply</a>
+								<br><br>
+							</div>                        	
+                    </div>
+                    
+                    <div class="panel-heading">
+                            <button class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" ng-click="goToPostStatus()">
+                                POST
+                            </button>
+                            <button class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" ng-click="refreshList()">
+                                REFRESH
+                            </button>
+                            <button class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" ng-click="goToDashBoard()">
+                                DASHBOARD
+                            </button>                            
+                            </div>
+                    </div>                    
+ 
+                </div>
+ 
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- /.container -->
